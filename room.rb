@@ -11,10 +11,6 @@ def initialize(name, songs, capacity)
   @guests = []
 end
 
-def add_guest_to_room(guest)
-  @guests.push(guest)
-end
-
 def remove_guest_from_room(guest)
   @guests.delete(guest)
 end
@@ -30,5 +26,14 @@ end
 def check_current_space
   @capacity -= @guests.length()
 end
+
+def add_guest_to_room(guest)
+  if @guests.length() < @capacity
+  @guests.push(guest)
+end
+  return "Sorry, no space!"
+end
+
+
 
 end
