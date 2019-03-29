@@ -18,4 +18,8 @@ def remove_guest_from_room(guest)
   @guests.delete(guest)
 end
 
+def add_song_to_room(song)
+  @songs.push(song)
+end
+
 end

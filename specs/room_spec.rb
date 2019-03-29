@@ -15,7 +15,7 @@ class RoomTest < MiniTest::Test
     @song1 = Song.new("Lose Yourself", "Eminem")
     @song2 = Song.new("Wonderwall", "Oasis")
     @song3 = Song.new("Tribute", "Tenacious D")
-    @songs = [@song1, @song2, @song3]
+    @songs = [@song1, @song2]
 
 
     @room1 = Room.new("Room 1", @songs)
@@ -24,7 +24,7 @@ class RoomTest < MiniTest::Test
   def test_can_find_room_details
     assert_equal("Room 1", @room1.name)
     assert_equal(0, @room1.guests.length())
-    assert_equal(3, @room1.songs.length())
+    assert_equal(2, @room1.songs.length())
   end
 
   def test_can_add_guest_to_room
@@ -39,6 +39,10 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room1.guests.length())
   end
 
+  def test_can_add_song_to_room
+    @room1.add_song_to_room(@song3)
+    assert_equal(3, @room1.songs.length())
+  end
 
 
 
