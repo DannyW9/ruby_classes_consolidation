@@ -1,11 +1,13 @@
 require('minitest/autorun')
 require('minitest/rg')
 require_relative('../guest.rb')
+require_relative('../room.rb')
 
 class GuestTest < MiniTest::Test
 
 def setup
   @guest1 = Guest.new("Dave", 100, "Highway to Hell")
+  @guest1 = Guest.new("Jodie", 20, "Wonderwall")
 end
 
 def test_can_find_guest_details
