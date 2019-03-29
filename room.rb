@@ -1,12 +1,13 @@
 class Room
 
-attr_reader :name, :songs
+attr_reader :name, :songs, :capacity
 attr_accessor :guests
 
 
-def initialize(name, songs)
+def initialize(name, songs, capacity)
   @name = name
   @songs = songs
+  @capacity = capacity
   @guests = []
 end
 

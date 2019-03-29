@@ -18,13 +18,14 @@ class RoomTest < MiniTest::Test
     @songs = [@song1, @song2]
 
 
-    @room1 = Room.new("Room 1", @songs)
+    @room1 = Room.new("Room 1", @songs, 5)
   end
 
   def test_can_find_room_details
     assert_equal("Room 1", @room1.name)
     assert_equal(0, @room1.guests.length())
     assert_equal(2, @room1.songs.length())
+    assert_equal(5, @room1.capacity)
   end
 
   def test_can_add_guest_to_room
