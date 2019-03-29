@@ -32,7 +32,12 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room1.guests.length())
   end
 
-
+  def test_can_remove_guest_from_room
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest2)
+    @room1.remove_guest_from_room(@guest1)
+    assert_equal(1, @room1.guests.length())
+  end
 
 
 
