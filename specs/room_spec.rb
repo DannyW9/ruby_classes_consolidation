@@ -50,6 +50,11 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room1.songs.length())
   end
 
+  def test_current_space_in_room
+    @room1.add_guest_to_room(@guest1)
+    assert_equal(4, @room1.check_current_space)
+  end
+
 
 
 end

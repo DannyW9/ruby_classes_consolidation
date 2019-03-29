@@ -27,4 +27,8 @@ def remove_song_from_room(song)
   @songs.delete(song)
 end
 
+def check_current_space
+  @capacity -= @guests.length()
+end
+
 end
