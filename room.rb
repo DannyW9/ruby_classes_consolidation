@@ -22,4 +22,8 @@ def add_song_to_room(song)
   @songs.push(song)
 end
 
+def remove_song_from_room(song)
+  @songs.delete(song)
+end
+
 end

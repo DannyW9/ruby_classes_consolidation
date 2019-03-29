@@ -44,6 +44,11 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room1.songs.length())
   end
 
+  def test_can_remove_song_from_room
+    @room1.remove_song_from_room(@song1)
+    assert_equal(1, @room1.songs.length())
+  end
+
 
 
 end
