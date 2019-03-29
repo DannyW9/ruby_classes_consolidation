@@ -28,6 +28,16 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room1.songs.length())
   end
 
+  def test_can_change_room_guests
+    @room1.guests.delete(@guest1)
+    assert_equal(2, @room1.guests.length())
+  end
+
+  def test_can_change_room_songs
+    @room1.songs.delete(@song1)
+    assert_equal(2, @room1.songs.length())
+  end
+
 
 
 
