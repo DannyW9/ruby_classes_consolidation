@@ -24,7 +24,7 @@ def remove_song_from_room(song)
   @songs.delete(song)
 end
 
-def check_current_space()
+def check_current_space
   return true if @guests.length() < @capacity
   return false if @guests.length() >= @capacity
 end
@@ -35,10 +35,9 @@ def afford_entry(guest)
 end
 
 def add_guest_to_room(guest)
-  if check_current_space() == true
-  @guests.push(guest)
+  if afford_entry(guest) == true && check_current_space() == true
+    @guests.push(guest)
 end
-  return "Sorry, no space!"
 end
 
 

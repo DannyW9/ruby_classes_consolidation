@@ -9,10 +9,8 @@ class RoomTest < MiniTest::Test
   def setup
 
     @guest1 = Guest.new("Dave", 100, "Highway to Hell")
-    @guest2 = Guest.new("Jodie", 20, "Lose Yourself")
-    @guest3 = Guest.new("Nathan", 120, "Wonderwall")
-    @guest4 = Guest.new("Nathan", 120, "Wonderwall")
-    @guest5 = Guest.new("Nathan", 120, "Wonderwall")
+    @guest2 = Guest.new("Jodie", 120, "Lose Yourself")
+    @guest3 = Guest.new("Nathan", 20, "Wonderwall")
 
     @song1 = Song.new("Lose Yourself", "Eminem")
     @song2 = Song.new("Wonderwall", "Oasis")
@@ -57,22 +55,28 @@ class RoomTest < MiniTest::Test
     assert_equal(true, @room1.check_current_space)
   end
 
+  def test_cannot_add_guest__no_space
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest1)
+    assert_equal(3, @room1.guests.length())
+    assert_equal(false, @room1.check_current_space)
+  end
+
   def test_can_guest_afford_entry__can_afford
     assert_equal(true, @room1.afford_entry(@guest1))
   end
 
   def test_can_guest_afford_entry__cannot_afford
-    assert_equal(false, @room1.afford_entry(@guest2))
+    assert_equal(false, @room1.afford_entry(@guest3))
   end
 
-  def test_cannot_add_guest__no_space
-    @room1.add_guest_to_room(@guest1)
-    @room1.add_guest_to_room(@guest2)
+  def test_cannot_add_guest__cannot_afford_entry
     @room1.add_guest_to_room(@guest3)
-    @room1.add_guest_to_room(@guest4)
-    assert_equal("Sorry, no space!", @room1.add_guest_to_room(@guest5))
-    assert_equal(3, @room1.guests.length())
-    assert_equal(false, @room1.check_current_space)
+    assert_equal(0, @room1.guests.length())
+    assert_equal(true, @room1.check_current_space)
   end
+
 
 end
