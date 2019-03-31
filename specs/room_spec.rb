@@ -37,6 +37,7 @@ class RoomTest < MiniTest::Test
     @room1.add_guest_to_room(@guest1, @room1)
     assert_equal(1, @room1.guests.length())
     assert_equal(25, @room1.till)
+    assert_equal(75, @guest1.wallet)
   end
 
   def test_can_remove_guest_from_room
@@ -89,6 +90,7 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.guests.length())
     assert_equal(true, @room1.check_current_space)
     assert_equal(0, @room1.till)
+    assert_equal(100, @guest1.wallet)
   end
 
 
