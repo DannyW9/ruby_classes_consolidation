@@ -23,6 +23,18 @@ def add_guest_to_first_room(guest)
   end
 end
 
+def check_room_for_group(group)
+  @rooms_list.each do |room|
+    if ((room.capacity - room.guests.length()) > group.length())
+      return room
+    end
+  end
+end
+
+def add_group_to_room(group)
+  room = check_room_for_group(group)
+  group.each { |person| room.guests << person}
+end
 
 
 # def add_guest_to_first_available(guest)

@@ -51,14 +51,4 @@ def add_guest_to_room(guest, room)
   end
 end
 
-########### Venue with multiple rooms ############
-
-# Add guest to first available room
-
-
-
-  # @guests.push(guest)
-# end
-
-
 end

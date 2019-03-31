@@ -13,11 +13,14 @@ def setup
   @songs = [@song1, @song2]
 
   @room1 = Room.new("Room 1", @songs, 0, 25)
-  @room2 = Room.new("Room 2", @songs, 4, 20)
+  @room2 = Room.new("Room 2", @songs, 2, 20)
   @room3 = Room.new("Room 3", @songs, 5, 15)
   @room_list = [@room1, @room2, @room3]
 
   @guest1 = Guest.new("Dave", 100, "Highway to Hell")
+  @guest2 = Guest.new("Jodie", 120, "Lose Yourself")
+  @guest3 = Guest.new("Nathan", 20, "Wonderwall")
+  @group1 = [@guest1, @guest2, @guest3]
 
   @venue = Venue.new(@room_list)
 end
@@ -37,6 +40,16 @@ def test_add_guest_to_first_room
   assert_equal(1, @room2.guests.length())
   assert_equal(80, @guest1.wallet)
   assert_equal(20, @room2.till)
+end
+
+def test_check_if_room_can_fit_group
+  room = @venue.check_room_for_group(@group1)
+  assert_equal("Room 3", room.name)
+end
+
+def test_check_add_group_to_room
+  @venue.add_group_to_room(@group1)
+  assert_equal(3, @room3.guests.length())
 end
 
 # def test_add_guest_to_first_available_room__second_room

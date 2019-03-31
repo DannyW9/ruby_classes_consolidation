@@ -99,9 +99,5 @@ class RoomTest < MiniTest::Test
     assert_equal(100, @guest1.wallet)
   end
 
-########### Venue with multiple rooms ############
-
-
-
 
 end
