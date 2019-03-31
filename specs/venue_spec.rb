@@ -52,6 +52,11 @@ def test_check_add_group_to_room
   assert_equal(3, @room3.guests.length())
 end
 
+def test_check_total_funds_of_group
+  assert_equal(240, @venue.total_group_funds(@group1))
+end
+
+
 # def test_add_guest_to_first_available_room__second_room
 #   test = @venue.add_guest_to_first_available(@guest1)
 #   assert_equal(1, test)

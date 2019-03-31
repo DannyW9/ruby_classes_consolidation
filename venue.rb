@@ -23,6 +23,8 @@ def add_guest_to_first_room(guest)
   end
 end
 
+############# adding entire groups of guests to rooms
+
 def check_room_for_group(group)
   @rooms_list.each do |room|
     if ((room.capacity - room.guests.length()) > group.length())
@@ -35,6 +37,14 @@ def add_group_to_room(group)
   room = check_room_for_group(group)
   group.each { |person| room.guests << person}
 end
+
+def total_group_funds(group)
+  total_funds = 0
+  group.each { |person| total_funds += person.wallet }
+  return total_funds
+end
+
+
 
 
 # def add_guest_to_first_available(guest)
