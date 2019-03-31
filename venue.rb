@@ -6,14 +6,33 @@ def initialize(rooms_list)
   @rooms_list = rooms_list
 end
 
-
-def add_guest_to_first_available(guest)
+def check_for_room_with_space
   @rooms_list.each do |room|
     if room.guests.length() < room.capacity
-      room.add_guest_to_first_room(guest)
+      return room
     end
   end
 end
+
+def add_guest_to_first_room(guest)
+  room = check_for_room_with_space()
+  if room.afford_entry(guest) == true
+    guest.pay_entry(room)
+    room.add_fee_to_room
+    room.guests.push(guest)
+  end
+end
+
+
+
+# def add_guest_to_first_available(guest)
+#   @rooms_list.each do |room|
+#     if room.guests.length() < room.capacity
+#       return room
+#       # room.add_guest_to_first_room(guest)
+#     end
+#   end
+# end
 
 
 end

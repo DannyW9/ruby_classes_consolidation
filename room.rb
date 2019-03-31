@@ -55,9 +55,10 @@ end
 
 # Add guest to first available room
 
-def add_guest_to_first_room(guest)
-  @guests.push(guest)
-end
+
+
+  # @guests.push(guest)
+# end
 
 
 end
