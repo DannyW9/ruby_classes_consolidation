@@ -29,13 +29,13 @@ class RoomTest < MiniTest::Test
   end
 
   def test_can_add_guest_to_room
-    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest1, @room1)
     assert_equal(1, @room1.guests.length())
   end
 
   def test_can_remove_guest_from_room
-    @room1.add_guest_to_room(@guest1)
-    @room1.add_guest_to_room(@guest2)
+    @room1.add_guest_to_room(@guest1, @room1)
+    @room1.add_guest_to_room(@guest2, @room1)
     @room1.remove_guest_from_room(@guest1)
     assert_equal(1, @room1.guests.length())
   end
@@ -56,15 +56,15 @@ class RoomTest < MiniTest::Test
   end
 
   def test_does_room_have_space
-    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest1, @room1)
     assert_equal(true, @room1.check_current_space)
   end
 
   def test_cannot_add_guest__no_space
-    @room1.add_guest_to_room(@guest1)
-    @room1.add_guest_to_room(@guest1)
-    @room1.add_guest_to_room(@guest1)
-    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest1, @room1)
+    @room1.add_guest_to_room(@guest1, @room1)
+    @room1.add_guest_to_room(@guest1, @room1)
+    @room1.add_guest_to_room(@guest1, @room1)
     assert_equal(3, @room1.guests.length())
     assert_equal(false, @room1.check_current_space)
   end
@@ -78,7 +78,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_cannot_add_guest__cannot_afford_entry
-    @room1.add_guest_to_room(@guest3)
+    @room1.add_guest_to_room(@guest3, @room1)
     assert_equal(0, @room1.guests.length())
     assert_equal(true, @room1.check_current_space)
   end

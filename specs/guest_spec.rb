@@ -52,6 +52,11 @@ def test_can_enter_room
   assert_equal(1, @room1.guests.length())
 end
 
+def test_cannot_enter_room
+  @guest3.enter_room(@guest3, @room1)
+  assert_equal(20, @guest3.wallet)
+end
+
 
 
 

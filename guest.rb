@@ -23,8 +23,7 @@ def check_for_favourite(room)
 end
 
 def enter_room(guest, room)
-  room.add_guest_to_room(guest)
-  guest.pay_entry(room)
+  room.add_guest_to_room(guest, room)
 end
 
 
