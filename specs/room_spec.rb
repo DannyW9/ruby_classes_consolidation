@@ -3,6 +3,7 @@ require('minitest/rg')
 require_relative('../room.rb')
 require_relative('../guest.rb')
 require_relative('../song.rb')
+require_relative('../venue.rb')
 
 class RoomTest < MiniTest::Test
 
@@ -17,8 +18,13 @@ class RoomTest < MiniTest::Test
     @song3 = Song.new("Tribute")
     @songs = [@song1, @song2]
 
-
     @room1 = Room.new("Room 1", @songs, 3, 25)
+    @room2 = Room.new("Room 2", @songs, 4, 20)
+    @room3 = Room.new("Room 3", @songs, 5, 15)
+    @room_list = [@room1, @room2, @room3]
+
+    @venue = Venue.new(@room_list)
+
   end
 
   def test_can_find_room_details
@@ -92,6 +98,10 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.till)
     assert_equal(100, @guest1.wallet)
   end
+
+########### Venue with multiple rooms ############
+
+
 
 
 end

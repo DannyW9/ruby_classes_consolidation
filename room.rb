@@ -25,7 +25,7 @@ def remove_song_from_room(song)
   @songs.delete(song)
 end
 
-def create_playlist_of_titles
+def create_playlist_of_titles # For checking for guests favourite song
   @songs.map { |song| song.title }
 end
 
@@ -51,10 +51,13 @@ def add_guest_to_room(guest, room)
   end
 end
 
+########### Venue with multiple rooms ############
 
+# Add guest to first available room
 
-
-
+def add_guest_to_first_room(guest)
+  @guests.push(guest)
+end
 
 
 end
