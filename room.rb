@@ -24,6 +24,10 @@ def remove_song_from_room(song)
   @songs.delete(song)
 end
 
+def create_playlist_of_titles
+  @songs.map { |song| song.title }
+end
+
 def check_current_space
   return true if @guests.length() < @capacity
   return false if @guests.length() >= @capacity
@@ -39,6 +43,8 @@ def add_guest_to_room(guest)
     @guests.push(guest)
 end
 end
+
+
 
 
 

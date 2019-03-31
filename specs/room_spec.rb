@@ -12,9 +12,9 @@ class RoomTest < MiniTest::Test
     @guest2 = Guest.new("Jodie", 120, "Lose Yourself")
     @guest3 = Guest.new("Nathan", 20, "Wonderwall")
 
-    @song1 = Song.new("Lose Yourself", "Eminem")
-    @song2 = Song.new("Wonderwall", "Oasis")
-    @song3 = Song.new("Tribute", "Tenacious D")
+    @song1 = Song.new("Lose Yourself")
+    @song2 = Song.new("Wonderwall")
+    @song3 = Song.new("Tribute")
     @songs = [@song1, @song2]
 
 
@@ -48,6 +48,11 @@ class RoomTest < MiniTest::Test
   def test_can_remove_song_from_room
     @room1.remove_song_from_room(@song1)
     assert_equal(1, @room1.songs.length())
+  end
+
+  def test_create_playlist_of_titles
+    test = @room1.create_playlist_of_titles
+    assert_equal(["Lose Yourself", "Wonderwall"], test)
   end
 
   def test_does_room_have_space
