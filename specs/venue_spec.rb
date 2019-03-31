@@ -56,6 +56,11 @@ def test_check_total_funds_of_group
   assert_equal(240, @venue.total_group_funds(@group1))
 end
 
+def test_group_afford_entry
+  test = @venue.group_afford_entry(@group1)
+  assert_equal(true, test)
+end
+
 
 # def test_add_guest_to_first_available_room__second_room
 #   test = @venue.add_guest_to_first_available(@guest1)

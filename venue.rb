@@ -44,7 +44,11 @@ def total_group_funds(group)
   return total_funds
 end
 
-
+def group_afford_entry(group)
+  room = check_room_for_group(group)
+  return true if total_group_funds(group) >= (room.entry_fee * group.length())
+  return false if total_group_funds(group) < (room.entry_fee * group.length())
+end
 
 
 # def add_guest_to_first_available(guest)
