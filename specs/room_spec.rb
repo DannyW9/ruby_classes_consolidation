@@ -28,6 +28,11 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room1.capacity)
   end
 
+  def test_can_add_fee_to_till
+    @room1.add_fee_to_room
+    assert_equal(25, @room1.till)
+  end
+
   def test_can_add_guest_to_room
     @room1.add_guest_to_room(@guest1, @room1)
     assert_equal(1, @room1.guests.length())

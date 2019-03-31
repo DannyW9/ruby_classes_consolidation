@@ -1,7 +1,7 @@
 class Room
 
 attr_reader :name, :songs, :capacity, :entry_fee
-attr_accessor :guests
+attr_accessor :guests, :till
 
 
 def initialize(name, songs, capacity, entry_fee)
@@ -10,6 +10,7 @@ def initialize(name, songs, capacity, entry_fee)
   @capacity = capacity
   @entry_fee = entry_fee
   @guests = []
+  @till = 0
 end
 
 def remove_guest_from_room(guest)
@@ -38,12 +39,19 @@ def afford_entry(guest)
   return false if guest.wallet < @entry_fee
 end
 
+def add_fee_to_room
+  @till += @entry_fee
+end
+
 def add_guest_to_room(guest, room)
   if afford_entry(guest) == true && check_current_space() == true
-    @guests.push(guest)
     guest.pay_entry(room)
+    room.add_fee_to_room
+    @guests.push(guest)
   end
 end
+
+
 
 
 
