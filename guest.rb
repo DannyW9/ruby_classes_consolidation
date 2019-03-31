@@ -9,6 +9,10 @@ def initialize(name, wallet, favourite_song)
   @favourite_song = favourite_song
 end
 
+def pay_entry(room)
+  @wallet -= room.entry_fee
+end
+
 def check_for_favourite(room)
   playlist = room.create_playlist_of_titles
   if playlist.find { |song| song == @favourite_song}
@@ -16,6 +20,11 @@ def check_for_favourite(room)
   else
     return "Awwwwwh!"
   end
+end
+
+def enter_room(guest, room)
+  room.add_guest_to_room(guest)
+  guest.pay_entry(room)
 end
 
 

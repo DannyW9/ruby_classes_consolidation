@@ -41,7 +41,7 @@ end
 def add_guest_to_room(guest)
   if afford_entry(guest) == true && check_current_space() == true
     @guests.push(guest)
-end
+  end
 end
 
 

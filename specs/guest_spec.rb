@@ -31,6 +31,11 @@ def test_can_change_guest_wallet
   assert_equal(50, @guest1.wallet)
 end
 
+def test_guest_pays_entry
+  @guest2.pay_entry(@room1)
+  assert_equal(95, @guest2.wallet)
+end
+
 def test_check_for_favourite_song__has_song
   test = @guest2.check_for_favourite(@room1)
   assert_equal("Whoooooo!", test)
@@ -39,6 +44,12 @@ end
 def test_check_for_favourite_song__does_not_have_song
   test = @guest1.check_for_favourite(@room1)
   assert_equal("Awwwwwh!", test)
+end
+
+def test_can_enter_room
+  @guest1.enter_room(@guest1, @room1)
+  assert_equal(75, @guest1.wallet)
+  assert_equal(1, @room1.guests.length())
 end
 
 
