@@ -33,11 +33,6 @@ def check_room_for_group(group)
   end
 end
 
-def add_group_to_room(group)
-  room = check_room_for_group(group)
-  group.each { |person| room.guests << person}
-end
-
 def total_group_funds(group)
   total_funds = 0
   group.each { |person| total_funds += person.wallet }
@@ -50,6 +45,17 @@ def group_afford_entry(group)
   return false if total_group_funds(group) < (room.entry_fee * group.length())
 end
 
+def add_group_to_room(group)
+  room = check_room_for_group(group)
+  if group_afford_entry(group) == true
+    group.each { |person| room.guests << person}
+  end
+end
+
+def add_group_fee(group)
+  room = check_room_for_group(group)
+  room.till += (room.entry_fee * group.length())
+end
 
 # def add_guest_to_first_available(guest)
 #   @rooms_list.each do |room|
