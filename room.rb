@@ -43,12 +43,14 @@ def add_fee_to_room
   @till += @entry_fee
 end
 
-def add_guest_to_room(guest, room)
+def add_guest_to_room(guest)
   if afford_entry(guest) == true && check_current_space() == true
-    guest.pay_entry(room)
-    room.add_fee_to_room
+    guest.pay_entry(self)
+    add_fee_to_room()
     @guests.push(guest)
   end
 end
+
+# self
 
 end

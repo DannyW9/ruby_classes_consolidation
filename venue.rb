@@ -6,6 +6,8 @@ def initialize(rooms_list)
   @rooms_list = rooms_list
 end
 
+####### adding guest to first room with space available
+
 def check_for_room_with_space
   @rooms_list.each do |room|
     if room.guests.length() < room.capacity

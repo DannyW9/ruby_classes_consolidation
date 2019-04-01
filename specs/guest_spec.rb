@@ -16,7 +16,6 @@ def setup
   @song3 = Song.new("Tribute")
   @songs = [@song1, @song2]
 
-
   @room1 = Room.new("Room 1", @songs, 3, 25)
 end
 
